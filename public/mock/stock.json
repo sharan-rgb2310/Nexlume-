@@ -1,0 +1,68 @@
+{
+  "shopId": "TN-RS-1001",
+  "shopName": "Tamil Nadu Fair Price Shop",
+  "district": "Chennai",
+  "isDummyData": true,
+  "products": [
+    {
+      "productId": "P001",
+      "productName": "Rice",
+      "unit": "kg",
+      "openingStock": 1200,
+      "availableQuantity": 1200,
+      "distributedQuantity": 300,
+      "lowStockThreshold": 200,
+      "pricePerUnit": 0,
+      "status": "in_stock"
+    },
+    {
+      "productId": "P002",
+      "productName": "Sugar",
+      "unit": "kg",
+      "openingStock": 300,
+      "availableQuantity": 45,
+      "distributedQuantity": 255,
+      "lowStockThreshold": 50,
+      "pricePerUnit": 25,
+      "status": "low_stock"
+    },
+    {
+      "productId": "P003",
+      "productName": "Black Gram",
+      "unit": "kg",
+      "openingStock": 200,
+      "availableQuantity": 10,
+      "distributedQuantity": 200,
+      "lowStockThreshold": 30,
+      "pricePerUnit": 30,
+      "status": "out_of_stock"
+    },
+    {
+      "productId": "P004",
+      "productName": "Palm Oil",
+      "unit": "litre",
+      "openingStock": 250,
+      "availableQuantity": 75,
+      "distributedQuantity": 175,
+      "lowStockThreshold": 25,
+      "pricePerUnit": 25,
+      "status": "in_stock"
+    },
+    {
+      "productId": "P005",
+      "productName": "Wheat",
+      "unit": "kg",
+      "openingStock": 400,
+      "availableQuantity": 35,
+      "distributedQuantity": 365,
+      "lowStockThreshold": 40,
+      "pricePerUnit": 0,
+      "status": "low_stock"
+    }
+  ],
+  "apiConfig": {
+    "autoRefreshEnabled": true,
+    "refreshIntervalMs": 5000,
+    "updateStockOnDistribution": true
+  }
+}

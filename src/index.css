@@ -1,0 +1,1050 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', 'Noto Sans Tamil', sans-serif;
+  color: #0b3a8c;
+  background: #f5f9ff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 14px;
+  font-feature-settings: 'kern';
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: #f5f9ff;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+.dashboard-card {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 34px rgb(20 62 112 / 10%);
+}
+
+.gov-header {
+  min-height: 138px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 12px 4.5%;
+  color: white;
+  background: linear-gradient(112deg, #0b4d9c 0%, #0b3a8c 51%, #0a2f78 100%);
+}
+
+.gov-identity {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.emblem-wrap {
+  width: 122px;
+  min-width: 122px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid rgb(255 255 255 / 76%);
+  padding-right: 17px;
+  margin-right: 17px;
+}
+
+.emblem-wrap img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.gov-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.21;
+  color: #fff;
+}
+
+.gov-tamil {
+  font-family: 'Noto Sans Tamil', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.gov-english {
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 1px;
+}
+
+.gov-department-ta {
+  font-family: 'Noto Sans Tamil', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 5px;
+  line-height: 1.35;
+}
+
+.gov-department-en {
+  font-size: 12px;
+  line-height: 1.15;
+  margin-top: 2px;
+}
+
+.digital-identity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex: 0 0 36%;
+  min-width: 0;
+  padding-left: 26px;
+  border-left: 1px solid rgb(255 255 255 / 72%);
+}
+
+.digital-identity > svg {
+  flex: 0 0 88px;
+  width: 88px;
+  height: 104px;
+}
+
+.digital-identity > div {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.12;
+}
+
+.digital-identity strong {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.digital-identity span {
+  margin-top: 5px;
+  font-size: 13px;
+  line-height: 1.32;
+  white-space: nowrap;
+}
+
+.brand-title {
+  background: #fff;
+}
+
+.brand-main {
+  min-height: 111px;
+  display: flex;
+  align-items: center;
+  padding: 10px 4.5%;
+}
+
+.nexlume-logo {
+  display: block;
+  width: 210px;
+  height: auto;
+  flex: 0 0 210px;
+  object-fit: contain;
+}
+
+.brand-divider {
+  width: 1px;
+  align-self: stretch;
+  max-height: 75px;
+  margin: auto 24px;
+  background: #0b4da2;
+}
+
+.scheme-title {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  color: #0b3a8c;
+  line-height: 1.1;
+}
+
+.scheme-title strong {
+  font-family: 'Noto Sans Tamil', sans-serif;
+  font-size: clamp(22px, 3.35vw, 32px);
+  line-height: 1.2;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.scheme-title span {
+  font-size: clamp(24px, 4.2vw, 35px);
+  font-weight: 700;
+  letter-spacing: -.7px;
+}
+
+.tricolor-line {
+  height: 6px;
+  display: grid;
+  grid-template-columns: 39% 26% 35%;
+}
+
+.tricolor-line i:nth-child(1) { background: #16a34a; }
+.tricolor-line i:nth-child(2) { background: #1d6fd8; }
+.tricolor-line i:nth-child(3) { background: #16a34a; }
+
+.dashboard-content {
+  padding: 14px 2.6% 12px;
+}
+
+.shop-info {
+  min-height: 106px;
+  display: grid;
+  grid-template-columns: 1.04fr 1.03fr .87fr;
+  align-items: center;
+  padding: 14px 16px;
+  border-radius: 10px;
+  color: #fff;
+  background: linear-gradient(110deg, #10a06b 0%, #08784d 100%);
+  box-shadow: 0 4px 10px rgb(10 83 58 / 14%);
+}
+
+.shop-info-item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.shop-info-item + .shop-info-item {
+  border-left: 1px solid rgb(255 255 255 / 75%);
+  padding-left: 18px;
+}
+
+.shop-code {
+  gap: 12px;
+}
+
+.map-pin-circle {
+  width: 78px;
+  height: 78px;
+  flex: 0 0 78px;
+  display: grid;
+  place-items: center;
+  border: 3px solid #fff;
+  border-radius: 50%;
+}
+
+.map-pin-circle svg {
+  color: #0d8a59;
+  stroke: #0d8a59;
+}
+
+.info-label {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  font-size: 13px;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.info-label [lang='ta'] {
+  font-family: 'Noto Sans Tamil', sans-serif;
+  font-weight: 600;
+}
+
+.shop-code-number {
+  display: block;
+  margin-top: 4px;
+  font-size: 27px;
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+.shop-location {
+  padding-left: 17px !important;
+}
+
+.location-ta,
+.location-en {
+  display: block;
+  white-space: nowrap;
+}
+
+.location-ta {
+  margin-top: 4px;
+  font-family: 'Noto Sans Tamil', sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.location-en {
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.shop-date {
+  gap: 9px;
+}
+
+.shop-date .info-label {
+  font-size: 11px;
+}
+
+.calendar-icon {
+  flex: 0 0 33px;
+  fill: #fff;
+  stroke: #0d8052;
+}
+
+.date-value,
+.time-value {
+  display: block;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.date-value {
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.time-value {
+  margin-top: 2px;
+  font-size: 21px;
+}
+
+.stock-section {
+  margin-top: 18px;
+}
+
+.stock-titlebar {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 24px;
+  border-radius: 9px 9px 5px 5px;
+  color: #fff;
+  background: linear-gradient(105deg, #0b4da2 0%, #064b9e 100%);
+}
+
+.stock-package-icon {
+  flex: 0 0 43px;
+}
+
+.stock-heading-copy {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.stock-heading-copy h2 {
+  margin: 0;
+  color: #fff;
+  font-family: 'Noto Sans Tamil', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.stock-heading-copy > span {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.live-stock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.live-dot {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #18b76b;
+  box-shadow: 0 0 0 0 rgb(24 183 107 / 55%);
+  animation: pulse 2s infinite;
+}
+
+.refresh-button {
+  width: 31px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 6px;
+  color: #fff;
+  background: transparent;
+  cursor: pointer;
+}
+
+.refresh-button:hover,
+.refresh-button:focus-visible {
+  background: rgb(255 255 255 / 15%);
+}
+
+.refresh-button.is-refreshing svg {
+  animation: spin 1s linear;
+}
+
+.table-shell {
+  overflow: hidden;
+  border: 1px solid #b9d7fb;
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
+}
+
+.stock-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  color: #0b3a8c;
+}
+
+.commodity-column { width: 49%; }
+.stock-column { width: 29%; }
+.unit-column { width: 22%; }
+
+.stock-table thead {
+  height: 56px;
+  background: #eaf3ff;
+}
+
+.stock-table thead th {
+  padding: 7px 10px;
+  font-family: 'Noto Sans Tamil', 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.28;
+  text-align: center;
+}
+
+.stock-table thead th:first-child {
+  text-align: left;
+  padding-left: 27px;
+}
+
+.stock-table thead th + th,
+.stock-row > * + * {
+  border-left: 1px solid #d8e9fc;
+}
+
+.stock-table thead th > span + span {
+  margin-left: 6px;
+}
+
+.stock-row {
+  height: 101px;
+  border-top: 1px solid #d8e9fc;
+  background: #fff;
+}
+
+.commodity-cell {
+  display: table-cell;
+  padding: 9px 16px 9px 23px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.commodity-art {
+  flex: 0 0 auto;
+  display: inline-grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #eaf3ff;
+  vertical-align: middle;
+}
+
+.commodity-art svg {
+  width: 100%;
+  height: 100%;
+}
+
+.commodity-name {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-left: 18px;
+  vertical-align: middle;
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.commodity-name strong {
+  font-family: 'Noto Sans Tamil', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.commodity-name span {
+  font-weight: 500;
+}
+
+.stock-cell,
+.unit-cell {
+  padding: 8px 12px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.stock-pill {
+  width: min(100%, 158px);
+  min-height: 63px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: #e6f7ee;
+  color: #0f6b3a;
+  font-size: 37px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.stock-pill.low-stock {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.stock-pill.out-of-stock {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.stock-error {
+  margin: 0;
+  padding: 8px 16px;
+  color: #991b1b;
+  background: #fef2f2;
+  font-size: 13px;
+}
+
+.empty-stock {
+  padding: 24px 12px;
+  color: #526b8c;
+  text-align: center;
+}
+
+.refresh-button:disabled {
+  cursor: wait;
+}
+
+.unit-cell strong,
+.unit-cell span {
+  display: block;
+}
+
+.unit-cell strong {
+  font-family: 'Noto Sans Tamil', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.unit-cell span {
+  margin-top: 2px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.info-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 11px 18px 10px;
+  color: #0b3a8c;
+}
+
+.info-note > svg {
+  flex: 0 0 20px;
+  margin-top: 1px;
+  padding: 3px;
+  border-radius: 50%;
+  color: #fff;
+  background: #277dd3;
+}
+
+.info-note p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.info-note p:first-child {
+  font-family: 'Noto Sans Tamil', sans-serif;
+}
+
+.footer-banner {
+  min-height: 112px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 6px;
+  padding: 12px 23px;
+  border-radius: 9px;
+  background: linear-gradient(105deg, #e5f3ff, #d8ecff);
+}
+
+.footer-message {
+  min-width: 0;
+  flex: 1 1 58%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-message > svg {
+  flex: 0 0 83px;
+}
+
+.footer-message > div,
+.website-copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-message strong {
+  font-family: 'Noto Sans Tamil', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.footer-message span {
+  margin-top: 3px;
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.footer-divider {
+  width: 1px;
+  height: 74px;
+  background: #0b4da2;
+}
+
+.website-info {
+  flex: 0 0 40%;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.globe-badge {
+  width: 51px;
+  height: 51px;
+  flex: 0 0 51px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: white;
+  background: #0b3a8c;
+}
+
+.website-copy strong {
+  font-family: 'Noto Sans Tamil', sans-serif;
+  font-size: 13px;
+}
+
+.website-copy > span {
+  margin-top: 1px;
+  font-size: 13px;
+}
+
+.website-copy a {
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 5px;
+  padding: 4px 13px 4px 18px;
+  border-radius: 30px;
+  color: #fff;
+  background: #0b3a8c;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.website-copy a:hover,
+.website-copy a:focus-visible {
+  background: #0b4da2;
+}
+
+.website-copy a > span:last-child {
+  font-size: 27px;
+  line-height: .7;
+}
+
+.bottom-stripe {
+  position: relative;
+  height: 35px;
+  overflow: hidden;
+  background: #0b3a8c;
+}
+
+.bottom-stripe i {
+  position: absolute;
+  top: 0;
+  right: 11%;
+  width: 62px;
+  height: 100%;
+  background: #16a34a;
+  transform: skewX(-42deg);
+}
+
+.bottom-stripe i + i {
+  right: 2%;
+  width: 60px;
+  background: #1d6fd8;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgb(24 183 107 / 48%); }
+  50% { box-shadow: 0 0 0 7px rgb(24 183 107 / 0%); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 700px) {
+  .gov-header {
+    min-height: 125px;
+    gap: 12px;
+    padding: 10px 3%;
+  }
+
+  .emblem-wrap {
+    width: 86px;
+    min-width: 86px;
+    padding-right: 9px;
+    margin-right: 9px;
+  }
+
+  .emblem-wrap img {
+    width: 72px;
+    height: 72px;
+  }
+
+  .gov-tamil { font-size: 14px; }
+  .gov-english { font-size: 11px; }
+  .gov-department-ta { font-size: 9px; }
+  .gov-department-en { font-size: 9px; }
+
+  .digital-identity {
+    flex-basis: 33%;
+    gap: 3px;
+    padding-left: 9px;
+  }
+
+  .digital-identity > svg {
+    flex-basis: 48px;
+    width: 48px;
+    height: 71px;
+  }
+
+  .digital-identity strong { font-size: 14px; }
+  .digital-identity span { font-size: 9px; }
+
+  .brand-main {
+    min-height: 95px;
+    padding: 9px 3%;
+  }
+
+  .nexlume-logo {
+    width: 190px;
+    flex-basis: 190px;
+  }
+
+  .brand-divider { margin: auto 14px; }
+  .scheme-title strong { font-size: clamp(16px, 3.2vw, 23px); }
+  .scheme-title span { font-size: clamp(18px, 3.8vw, 25px); }
+  .dashboard-content { padding: 12px 2.4% 10px; }
+
+  .shop-info {
+    min-height: 98px;
+    grid-template-columns: 1fr 1fr .88fr;
+    padding: 10px;
+  }
+
+  .shop-info-item + .shop-info-item { padding-left: 10px; }
+  .shop-code { gap: 6px; }
+  .map-pin-circle { width: 54px; height: 54px; flex-basis: 54px; border-width: 2px; }
+  .map-pin-circle svg { width: 28px; height: 28px; }
+  .info-label { gap: 3px; font-size: 10px; }
+  .shop-code-number { font-size: 23px; }
+  .location-ta { font-size: 13px; }
+  .location-en { font-size: 11px; }
+  .shop-date { gap: 7px; }
+  .calendar-icon { width: 25px; height: 25px; flex-basis: 25px; }
+  .date-value { font-size: 12px; }
+  .time-value { font-size: 16px; }
+
+  .stock-titlebar { min-height: 67px; gap: 9px; padding: 9px 13px; }
+  .stock-package-icon { width: 34px; height: 34px; flex-basis: 34px; }
+  .stock-heading-copy h2 { font-size: 16px; }
+  .stock-heading-copy > span { font-size: 14px; }
+  .live-stock { gap: 6px; font-size: 12px; }
+  .live-dot { width: 13px; height: 13px; }
+  .refresh-button { width: 25px; }
+  .refresh-button svg { width: 18px; }
+
+  .stock-table thead { height: 50px; }
+  .stock-table thead th { padding: 5px 4px; font-size: 11px; }
+  .stock-table thead th:first-child { padding-left: 12px; }
+  .stock-table thead th > span + span { margin-left: 3px; }
+  .commodity-column { width: 48%; }
+  .stock-column { width: 30%; }
+  .unit-column { width: 22%; }
+  .stock-row { height: 87px; }
+  .commodity-cell { padding: 6px 7px 6px 10px; }
+  .commodity-art { width: 62px !important; height: 62px !important; }
+  .commodity-name { margin-left: 8px; font-size: 14px; }
+  .commodity-name strong { font-size: 13px; }
+  .stock-cell, .unit-cell { padding: 6px 5px; }
+  .stock-pill { min-height: 51px; border-radius: 11px; font-size: 27px; }
+  .unit-cell strong { font-size: 13px; }
+  .unit-cell span { font-size: 14px; }
+
+  .info-note { gap: 7px; padding: 9px 7px; }
+  .info-note p { font-size: 10px; }
+  .footer-banner { min-height: 102px; gap: 10px; padding: 9px 12px; }
+  .footer-message { gap: 5px; }
+  .footer-message > svg { width: 60px; height: 60px; flex-basis: 60px; }
+  .footer-message strong { font-size: 14px; }
+  .footer-message span { font-size: 11px; }
+  .footer-divider { height: 68px; }
+  .website-info { flex-basis: 43%; gap: 7px; }
+  .globe-badge { width: 40px; height: 40px; flex-basis: 40px; }
+  .globe-badge svg { width: 27px; }
+  .website-copy strong, .website-copy > span { font-size: 10px; }
+  .website-copy a { min-height: 30px; padding: 3px 8px 3px 10px; font-size: 11px; }
+}
+
+@media (max-width: 430px) {
+  .gov-header { min-height: 112px; gap: 7px; }
+  .emblem-wrap { width: 67px; min-width: 67px; padding-right: 6px; margin-right: 6px; }
+  .emblem-wrap img { width: 58px; height: 58px; }
+  .gov-tamil { font-size: 12px; }
+  .gov-english { font-size: 9px; }
+  .gov-department-ta { font-size: 7px; margin-top: 3px; }
+  .gov-department-en { font-size: 7px; }
+  .digital-identity { flex-basis: 30%; padding-left: 6px; }
+  .digital-identity > svg { flex-basis: 38px; width: 38px; height: 60px; }
+  .digital-identity strong { font-size: 11px; }
+  .digital-identity span { font-size: 7px; }
+  .brand-main { min-height: 79px; }
+  .nexlume-logo { width: 135px; flex-basis: 135px; }
+  .brand-divider { margin: auto 8px; }
+  .scheme-title strong { font-size: clamp(12px, 3.2vw, 14px); }
+  .scheme-title span { font-size: 17px; }
+  .shop-info { grid-template-columns: 1fr 1fr; row-gap: 9px; }
+  .shop-location { border-left: 1px solid rgb(255 255 255 / 75%); }
+  .shop-location { padding-left: 10px !important; }
+  .shop-code .info-label { font-size: 9px; }
+  .location-ta { font-size: 12px; }
+  .shop-date { grid-column: 1 / -1; min-height: 38px; border-left: 0 !important; border-top: 1px solid rgb(255 255 255 / 55%); padding: 7px 5px 0 !important; }
+  .shop-date .info-label, .shop-date .date-value, .shop-date .time-value { display: inline-flex; margin: 0 8px 0 0; }
+  .shop-date .info-label { font-size: 9px; }
+  .shop-date .date-value { font-size: 12px; }
+  .shop-date .time-value { font-size: 14px; }
+  .stock-titlebar { padding: 8px; gap: 6px; }
+  .stock-heading-copy h2 { font-size: 13px; }
+  .stock-heading-copy > span { font-size: 11px; }
+  .live-stock { gap: 4px; font-size: 10px; }
+  .live-dot { width: 10px; height: 10px; }
+  .stock-package-icon { width: 27px; height: 27px; flex-basis: 27px; }
+  .refresh-button { width: 22px; }
+  .commodity-column { width: 47%; }
+  .stock-column { width: 31%; }
+  .unit-column { width: 22%; }
+  .stock-table thead th { font-size: 9px; }
+  .stock-row { height: 78px; }
+  .commodity-art { width: 48px !important; height: 48px !important; }
+  .commodity-name { margin-left: 5px; font-size: 12px; }
+  .commodity-name strong { font-size: 11px; }
+  .stock-pill { min-height: 43px; font-size: 23px; }
+  .unit-cell strong { font-size: 11px; }
+  .unit-cell span { font-size: 12px; }
+  .info-note p { font-size: 9px; }
+  .footer-banner { gap: 7px; padding: 8px; }
+  .footer-message > svg { width: 42px; height: 42px; flex-basis: 42px; }
+  .footer-message strong { font-size: 11px; }
+  .footer-message span { font-size: 9px; white-space: normal; }
+  .footer-divider { height: 58px; }
+  .website-info { flex-basis: 45%; gap: 5px; }
+  .globe-badge { width: 31px; height: 31px; flex-basis: 31px; }
+  .globe-badge svg { width: 22px; }
+  .website-copy strong, .website-copy > span { font-size: 8px; }
+  .website-copy a { min-height: 27px; gap: 4px; padding: 3px 6px; font-size: 9px; }
+}
+
+@media (max-width: 360px) {
+  .gov-header { gap: 4px; padding: 8px 2%; }
+  .emblem-wrap { width: 54px; min-width: 54px; padding-right: 4px; margin-right: 4px; }
+  .emblem-wrap img { width: 46px; height: 46px; }
+  .gov-tamil { font-size: 10px; }
+  .gov-english { font-size: 8px; }
+  .gov-department-ta { font-size: 6px; }
+  .gov-department-en { font-size: 6px; }
+  .digital-identity { flex-basis: 29%; gap: 1px; padding-left: 5px; }
+  .digital-identity > svg { flex-basis: 28px; width: 28px; height: 52px; }
+  .digital-identity strong { font-size: 9px; }
+  .digital-identity span { font-size: 6px; }
+
+  .brand-main { padding-right: 2%; padding-left: 2%; }
+  .nexlume-logo { width: 100px; flex-basis: 100px; }
+  .brand-divider { margin-right: 5px; margin-left: 5px; }
+  .scheme-title strong { font-size: 12px; }
+  .scheme-title span { font-size: 14px; }
+
+  .shop-info { padding: 7px; }
+  .shop-info-item + .shop-info-item { padding-left: 6px !important; }
+  .shop-code { gap: 4px; }
+  .map-pin-circle { width: 44px; height: 44px; flex-basis: 44px; }
+  .map-pin-circle svg { width: 22px; height: 22px; }
+  .shop-code .info-label { font-size: 8px; }
+  .shop-code-number { font-size: 20px; }
+  .location-ta { font-size: 9px; }
+  .location-en { font-size: 10px; }
+  .shop-location > div { max-width: 135px; }
+  .shop-location .info-label { flex-wrap: wrap; white-space: normal; }
+  .shop-location .location-ta,
+  .shop-location .location-en { white-space: normal; }
+
+  .commodity-art { width: 40px !important; height: 40px !important; }
+  .commodity-name { margin-left: 4px; font-size: 10px; }
+  .commodity-name strong { font-size: 9px; }
+  .stock-pill { font-size: 20px; }
+
+  .footer-banner { gap: 4px; padding: 7px; }
+  .footer-message { gap: 3px; }
+  .footer-message > svg { width: 30px; height: 30px; flex-basis: 30px; }
+  .footer-message strong { font-size: 10px; }
+  .footer-message span { font-size: 8px; }
+  .website-info { gap: 3px; }
+  .globe-badge { width: 26px; height: 26px; flex-basis: 26px; }
+  .globe-badge svg { width: 19px; }
+  .website-copy strong, .website-copy > span { font-size: 7px; }
+  .website-copy a { min-height: 24px; gap: 2px; padding: 3px 4px; font-size: 8px; }
+  .website-copy a svg { width: 15px; height: 15px; }
+}
+
+@media (min-width: 1024px) and (max-height: 850px) {
+  .gov-header {
+    min-height: 82px;
+    gap: 16px;
+    padding: 6px 3.5%;
+  }
+
+  .emblem-wrap {
+    width: 91px;
+    min-width: 91px;
+    padding-right: 10px;
+    margin-right: 12px;
+  }
+
+  .emblem-wrap img {
+    width: 72px;
+    height: 72px;
+  }
+
+  .gov-tamil { font-size: 14px; }
+  .gov-english { font-size: 12px; }
+  .gov-department-ta { margin-top: 2px; font-size: 10px; }
+  .gov-department-en { margin-top: 1px; font-size: 10px; }
+  .digital-identity { padding-left: 18px; }
+  .digital-identity > svg { flex-basis: 61px; width: 61px; height: 73px; }
+  .digital-identity strong { font-size: 16px; }
+  .digital-identity span { margin-top: 2px; font-size: 10px; }
+
+  .brand-main { min-height: 74px; padding: 6px 3.5%; }
+  .nexlume-logo { width: 145px; flex-basis: 145px; }
+  .brand-divider { max-height: 57px; margin-right: 20px; margin-left: 20px; }
+  .scheme-title strong { font-size: clamp(25px, 2.3vw, 31px); }
+  .scheme-title span { font-size: clamp(25px, 2.5vw, 33px); }
+  .tricolor-line { height: 5px; }
+
+  .dashboard-content { padding: 6px 2.3% 6px; }
+  .shop-info { min-height: 72px; padding: 8px 12px; }
+  .map-pin-circle { width: 54px; height: 54px; flex-basis: 54px; border-width: 2px; }
+  .map-pin-circle svg { width: 29px; height: 29px; }
+  .shop-code { gap: 10px; }
+  .shop-code-number { margin-top: 2px; font-size: clamp(17px, 1.7vw, 22px); letter-spacing: 1px; }
+  .info-label { gap: 4px; font-size: 11px; }
+  .location-ta { margin-top: 1px; font-size: 14px; line-height: 1.25; }
+  .location-en { font-size: 12px; }
+  .shop-info-item + .shop-info-item { padding-left: 14px; }
+  .shop-location { padding-left: 14px !important; }
+  .shop-date { gap: 8px; }
+  .shop-date .info-label { font-size: 10px; }
+  .calendar-icon { width: 25px; height: 25px; flex-basis: 25px; }
+  .date-value { margin-top: 1px; font-size: 13px; }
+  .time-value { margin-top: 0; font-size: 16px; }
+
+  .stock-section { margin-top: 10px; }
+  .stock-titlebar { min-height: 52px; gap: 10px; padding: 6px 18px; }
+  .stock-package-icon { width: 33px; height: 33px; flex-basis: 33px; }
+  .stock-heading-copy h2 { font-size: 16px; }
+  .stock-heading-copy > span { font-size: 15px; }
+  .live-stock { gap: 8px; font-size: 12px; }
+  .live-dot { width: 13px; height: 13px; }
+  .refresh-button { width: 27px; height: 30px; }
+  .refresh-button svg { width: 19px; height: 19px; }
+
+  .stock-table thead { height: 38px; }
+  .stock-table thead th { padding: 4px 8px; font-size: 12px; line-height: 1.2; }
+  .stock-table thead th:first-child { padding-left: 22px; }
+  .stock-row { height: 47px; }
+  .commodity-cell { padding: 3px 12px 3px 18px; }
+  .commodity-art { width: 46px !important; height: 46px !important; }
+  .commodity-name { gap: 0; margin-left: 12px; font-size: 13px; line-height: 1.2; }
+  .commodity-name strong { font-size: 13px; }
+  .stock-cell, .unit-cell { padding: 3px 8px; }
+  .stock-pill { min-height: 36px; border-radius: 10px; font-size: 24px; }
+  .unit-cell strong { font-size: 12px; line-height: 1.15; }
+  .unit-cell span { margin-top: 0; font-size: 13px; line-height: 1.15; }
+  .stock-error { padding: 4px 12px; font-size: 11px; }
+  .empty-stock { padding: 12px; }
+
+  .info-note { gap: 7px; padding: 4px 12px; }
+  .info-note > svg { width: 17px; height: 17px; flex-basis: 17px; }
+  .info-note p { font-size: 10px; line-height: 1.45; }
+  .footer-banner { min-height: 72px; gap: 14px; margin-top: 4px; padding: 6px 16px; }
+  .footer-message { gap: 8px; }
+  .footer-message > svg { width: 54px; height: 54px; flex-basis: 54px; }
+  .footer-message strong { font-size: 13px; line-height: 1.3; }
+  .footer-message span { margin-top: 1px; font-size: 12px; }
+  .footer-divider { height: 50px; }
+  .website-info { flex-basis: 40%; gap: 9px; }
+  .globe-badge { width: 40px; height: 40px; flex-basis: 40px; }
+  .globe-badge svg { width: 27px; height: 27px; }
+  .website-copy strong, .website-copy > span { font-size: 10px; }
+  .website-copy a { min-height: 27px; gap: 8px; margin-top: 3px; padding: 3px 10px; font-size: 11px; }
+  .website-copy a svg { width: 17px; height: 17px; }
+  .bottom-stripe { height: 20px; }
+  .bottom-stripe i { width: 48px; }
+  .bottom-stripe i + i { width: 46px; }
+}
