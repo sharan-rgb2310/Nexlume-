@@ -1,5 +1,9 @@
+import { useEffect, useState } from 'react'
 import { Package, RefreshCw } from 'lucide-react'
 import StockRow from './StockRow'
+
+const PRODUCTS_PER_PAGE = 5
+const PAGE_INTERVAL_MS = 10_000
 
 export default function StockTable({
   products,
@@ -10,6 +14,22 @@ export default function StockTable({
   lastUpdated,
   onRefresh,
 }) {
+  const [pageIndex, setPageIndex] = useState(0)
+  const pageCount = Math.ceil(products.length / PRODUCTS_PER_PAGE)
+  const currentPageIndex = pageCount > 0 ? pageIndex % pageCount : 0
+  const firstProductIndex = currentPageIndex * PRODUCTS_PER_PAGE
+  const visibleProducts = products.slice(firstProductIndex, firstProductIndex + PRODUCTS_PER_PAGE)
+
+  useEffect(() => {
+    if (pageCount <= 1) return undefined
+
+    const intervalId = window.setInterval(() => {
+      setPageIndex((currentIndex) => (currentIndex + 1) % pageCount)
+    }, PAGE_INTERVAL_MS)
+
+    return () => window.clearInterval(intervalId)
+  }, [pageCount])
+
   const updatedLabel = lastUpdated
     ? new Intl.DateTimeFormat('en-US', {
       hour: '2-digit',
@@ -46,6 +66,11 @@ export default function StockTable({
         </div>
       </div>
       {error && <p className="stock-error" role="alert">Unable to sync stock data: {error}</p>}
+      <span className="sr-only" aria-live="polite" aria-atomic="true">
+        {products.length > 0
+          ? `Showing commodities ${firstProductIndex + 1} through ${firstProductIndex + visibleProducts.length} of ${products.length}.`
+          : ''}
+      </span>
       <div className="table-shell">
         <table className="stock-table">
           <colgroup><col className="commodity-column" /><col className="stock-column" /><col className="unit-column" /></colgroup>
@@ -57,7 +82,7 @@ export default function StockTable({
             </tr>
           </thead>
           <tbody>
-            {products.map((item) => <StockRow key={item.id} item={item} />)}
+            {visibleProducts.map((item) => <StockRow key={item.id} item={item} />)}
             {isLoading && products.length === 0 && (
               <tr><td className="empty-stock" colSpan="3">Connecting to stock data…</td></tr>
             )}
