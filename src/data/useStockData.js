@@ -33,7 +33,15 @@ export default function useStockData() {
         signal: controller.signal,
       })
       if (!response.ok) {
-        throw new Error(`Stock request failed with HTTP ${response.status}.`)
+        const details = await response.json().catch(() => null)
+        const diagnosis = {
+          401: 'The Render API rejected its server-side key. Check the server-side Render API key configuration.',
+          404: 'The stock route was not found. Check the Vercel API deployment and Render endpoint path.',
+          500: 'The stock API reported a server error. Check the Vercel and Render service logs.',
+          502: 'The Vercel proxy could not reach Render. Check the Render service status and URL.',
+        }[response.status]
+        const serverMessage = typeof details?.error === 'string' ? ` ${details.error}` : ''
+        throw new Error(`Stock request failed with HTTP ${response.status}.${diagnosis ? ` ${diagnosis}` : ''}${serverMessage}`)
       }
 
       const result = normalizeStockResponse(await response.json())
@@ -46,7 +54,9 @@ export default function useStockData() {
       setLastUpdated(new Date())
     } catch (refreshError) {
       if (refreshError.name !== 'AbortError') {
-        setError(refreshError.message || 'Unable to fetch stock data.')
+        setError(refreshError instanceof TypeError
+          ? 'Unable to reach the stock API. Check the network connection and deployed API service.'
+          : refreshError.message || 'Unable to fetch stock data.')
       }
     } finally {
       if (requestRef.current === controller) {

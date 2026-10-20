@@ -16,6 +16,28 @@ The API key is generated into the ignored `.env` file when you set up the local 
 
 For production preview, run `npm run api` in one terminal and `npm run preview` in another. The preview proxy also forwards API requests to the local backend. The response's `apiConfig` controls automatic stock refresh.
 
+## Deploy the frontend and Render proxy to Vercel
+
+The frontend reads stock from the same-origin `/api/stock` route. Vercel Functions in `api/` proxy to Render using server-side credentials. The browser never receives `STOCK_API_KEY`.
+
+In Vercel, set **Project Root Directory** to the repository root (`.`), where `package.json`, `api/`, `serverless/`, and `vercel.json` live. The included Vercel configuration builds the Vite app into `dist`, maps stock API paths to their functions, and rewrites `/admin/...` to the SPA entry without rewriting `/api/...`.
+
+In Vercel **Settings → Environment Variables**, configure the following for Production (and Preview if you use preview deployments):
+
+| Variable | Value |
+| --- | --- |
+| `RENDER_API_URL` | `https://nexlume-qpds.onrender.com` |
+| `STOCK_API_KEY` | The server-side key configured on the Render API |
+| `STOCK_WRITE_TOKEN` | A separate secret required to authorize stock adjustments |
+
+Generate a write token locally with `node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"`. Enter the generated value directly in Vercel and keep it private. Do not prefix secrets with `VITE_`, place them in React/browser code, or commit `.env`. Redeploy Vercel after adding or changing environment variables.
+
+Test stock reads at `https://<your-vercel-domain>/api/stock`. The adjustment endpoint is `POST https://<your-vercel-domain>/api/stock/adjustments` with JSON `{ "productId": "P001", "action": "decrease", "quantity": 1 }` and header `x-stock-write-token` set to the configured write token. The function checks that authorization, then adds `STOCK_API_KEY` privately when it forwards the request to Render.
+
+Live checks during implementation: the Vercel homepage returned **200**, but its `/api/stock` returned **404** (the current deployment has no working function route yet); the public Render `/api/stock` returned **401** without credentials. The Render response body and authorized stock format cannot be verified without the private key, which was not accessed. After deployment, HTTP **401** indicates rejected credentials, **404** a missing route, **500** a server/configuration error, and **502** a network failure or timeout; check Vercel Function and Render logs to locate the source.
+
+The local Node API stores stock in `server/private/commodities.json`. Render's filesystem persistence setting belongs to the separate backend deployment and cannot be verified from this frontend repository. If Render writes stock to a JSON file, configure a persistent disk for changes to survive restarts.
+
 ## Adjust and verify commodity quantities
 
 The development server proxies requests to the API and adds the local key, so use the Vite URL printed by `npm run dev` (usually `http://localhost:5173`) for these PowerShell examples:
