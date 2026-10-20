@@ -10,7 +10,7 @@
       "unit": "kg",
       "openingStock": 1800,
       "receivedQuantity": 11,
-      "availableQuantity": 1130,
+      "availableQuantity": 1133,
       "distributedQuantity": 81,
       "lowStockThreshold": 200,
       "pricePerUnit": 0,
