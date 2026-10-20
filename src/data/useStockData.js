@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { normalizeStockResponse } from './stock'
 
-const apiUrl = import.meta.env.VITE_STOCK_API_URL || '/mock/stock.json'
 const configuredRefreshInterval = Number(import.meta.env.VITE_STOCK_REFRESH_INTERVAL_MS || 5000)
 const fallbackRefreshInterval = Number.isFinite(configuredRefreshInterval) && configuredRefreshInterval >= 1000
   ? configuredRefreshInterval
@@ -29,7 +28,7 @@ export default function useStockData() {
     setIsRefreshing(true)
 
     try {
-      const response = await fetch(apiUrl, {
+      const response = await fetch('/api/stock', {
         headers: { Accept: 'application/json' },
         signal: controller.signal,
       })

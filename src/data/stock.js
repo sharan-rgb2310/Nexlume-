@@ -2,12 +2,14 @@ import BlackGramBowl from '../components/graphics/BlackGramBowl'
 import PalmOilBottle from '../components/graphics/PalmOilBottle'
 import RiceBowl from '../components/graphics/RiceBowl'
 import SugarBowl from '../components/graphics/SugarBowl'
+import ToorDalBowl from '../components/graphics/ToorDalBowl'
 import WheatBowl from '../components/graphics/WheatBowl'
 
 const productDisplay = {
   Rice: { ta: 'அரிசி', unitTa: 'கிலோ', graphic: RiceBowl },
   Sugar: { ta: 'சர்க்கரை', unitTa: 'கிலோ', graphic: SugarBowl },
   'Black Gram': { ta: 'கருப்பு உளுந்து', unitTa: 'கிலோ', graphic: BlackGramBowl },
+  'Toor Dal': { ta: 'துவரம் பருப்பு', unitTa: 'கிலோ', graphic: ToorDalBowl },
   'Palm Oil': { ta: 'பாமாயில்', unitTa: 'லிட்டர்', graphic: PalmOilBottle },
   Wheat: { ta: 'கோதுமை', unitTa: 'கிலோ', graphic: WheatBowl },
 }
