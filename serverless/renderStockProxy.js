@@ -62,8 +62,16 @@ export function createRenderStockProxy({ method, path, write = false, fetchImpl 
 
     const apiKey = process.env.STOCK_API_KEY
     const apiUrl = process.env.RENDER_API_URL
-    if (!apiKey || !apiUrl) {
-      sendJson(response, 500, { error: 'Render stock API server configuration is incomplete.' })
+    if (!apiKey) {
+      sendJson(response, 500, {
+        error: 'Missing server-side STOCK_API_KEY environment variable in Vercel.',
+      })
+      return
+    }
+    if (!apiUrl) {
+      sendJson(response, 500, {
+        error: 'Missing server-side RENDER_API_URL environment variable in Vercel.',
+      })
       return
     }
 

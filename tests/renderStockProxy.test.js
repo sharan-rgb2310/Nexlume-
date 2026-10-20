@@ -63,6 +63,32 @@ test('GET forwards server authentication and preserves Render JSON', async () =>
   assert.equal(response.body, '{"products":[]}')
 })
 
+test('GET reports which required server environment setting is missing', async (context) => {
+  await context.test('missing API key', async () => {
+    process.env.RENDER_API_URL = 'https://render.example'
+    delete process.env.STOCK_API_KEY
+    const proxy = createRenderStockProxy({ method: 'GET', path: '/api/stock' })
+    const response = createResponse()
+
+    await proxy({ method: 'GET', headers: {} }, response)
+
+    assert.equal(response.status, 500)
+    assert.match(response.body, /STOCK_API_KEY/)
+  })
+
+  await context.test('missing Render URL', async () => {
+    process.env.STOCK_API_KEY = 'server-render-key'
+    delete process.env.RENDER_API_URL
+    const proxy = createRenderStockProxy({ method: 'GET', path: '/api/stock' })
+    const response = createResponse()
+
+    await proxy({ method: 'GET', headers: {} }, response)
+
+    assert.equal(response.status, 500)
+    assert.match(response.body, /RENDER_API_URL/)
+  })
+})
+
 test('POST rejects missing write authorization without contacting Render', async () => {
   configureEnvironment()
   let fetchCalled = false
