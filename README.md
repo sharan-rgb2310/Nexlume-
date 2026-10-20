@@ -4,6 +4,7 @@ A responsive React dashboard with inline SVG illustrations and a server-backed c
 
 The stock dashboard is available at `/`. The Admin console is integrated into the same application at `/admin`, with its Shops and Settings pages at `/admin/shops` and `/admin/settings`.
 The Admin console starts with no shop or device records. Previously saved built-in sample records are removed when the Admin app loads; other saved records are kept.
+When the stock API marks its response as dummy data, quantities animate locally every 4 seconds and cycle back to their sample values at their configured minimum; this simulation does not write to the API or JSON file. All commodity rows remain visible together instead of rotating through separate table pages.
 
 ## Run locally
 

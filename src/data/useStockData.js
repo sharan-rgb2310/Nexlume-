@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { advanceDemoProducts } from './demoStock'
 import { normalizeStockResponse } from './stock'
 
 const configuredRefreshInterval = Number(import.meta.env.VITE_STOCK_REFRESH_INTERVAL_MS || 5000)
+const demoRefreshInterval = 4000
 const fallbackRefreshInterval = Number.isFinite(configuredRefreshInterval) && configuredRefreshInterval >= 1000
   ? configuredRefreshInterval
   : 5000
@@ -47,7 +49,7 @@ export default function useStockData() {
       const result = normalizeStockResponse(await response.json())
       setStock({
         ...result,
-        refreshIntervalMs: result.apiConfig.refreshIntervalMs,
+        refreshIntervalMs: result.isDummyData ? demoRefreshInterval : result.apiConfig.refreshIntervalMs,
         autoRefreshEnabled: result.apiConfig.autoRefreshEnabled,
       })
       setError('')
@@ -77,11 +79,22 @@ export default function useStockData() {
   }, [refresh])
 
   useEffect(() => {
-    if (!stock.autoRefreshEnabled || !Number.isFinite(stock.refreshIntervalMs)) return undefined
+    if (stock.isDummyData || !stock.autoRefreshEnabled || !Number.isFinite(stock.refreshIntervalMs)) return undefined
 
     const intervalId = window.setInterval(() => void refresh(), stock.refreshIntervalMs)
     return () => window.clearInterval(intervalId)
-  }, [refresh, stock.autoRefreshEnabled, stock.refreshIntervalMs])
+  }, [refresh, stock.autoRefreshEnabled, stock.isDummyData, stock.refreshIntervalMs])
+
+  useEffect(() => {
+    if (!stock.isDummyData || stock.products.length === 0) return undefined
+
+    const intervalId = window.setInterval(() => {
+      setStock((current) => ({ ...current, products: advanceDemoProducts(current.products) }))
+      setLastUpdated(new Date())
+    }, demoRefreshInterval)
+
+    return () => window.clearInterval(intervalId)
+  }, [stock.isDummyData, stock.products.length])
 
   return {
     shopInfo: stock.shopInfo,

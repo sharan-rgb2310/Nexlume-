@@ -1,4 +1,4 @@
-import TamilNaduMap from './graphics/TamilNaduMap'
+import tamilNaduMap from '../assets/taminadu vector.jpeg'
 
 export default function BrandTitleBar() {
   return (
@@ -10,7 +10,7 @@ export default function BrandTitleBar() {
         </div>
         <div className="brand-divider" aria-hidden="true" />
         <div className="digital-identity">
-          <TamilNaduMap size={72} />
+          <img src={tamilNaduMap} alt="Map of Tamil Nadu" />
           <div>
             <strong>Digital Tamil Nadu</strong>
             <span>Transparent Services<br />Stronger Communities</span>
