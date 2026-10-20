@@ -4,7 +4,7 @@ import { createServer } from 'node:http'
 import { fileURLToPath } from 'node:url'
 
 const apiKey = process.env.STOCK_API_KEY
-const port = Number(process.env.API_PORT || 3001)
+const port = Number(process.env.PORT || process.env.API_PORT || 3001)
 const stockFile = fileURLToPath(new URL('./private/commodities.json', import.meta.url))
 const temporaryStockFile = `${stockFile}.${process.pid}.tmp`
 let adjustmentQueue = Promise.resolve()
@@ -132,11 +132,9 @@ const server = createServer(async (request, response) => {
   }
 })
 
-const PORT = process.env.PORT || 3001;
-
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Commodity API listening on port ${PORT}`);
-});
+server.listen(port, "0.0.0.0", () => {
+  console.log(`Commodity API listening on port ${port}`)
+})
 
 for (const signal of ['SIGINT', 'SIGTERM']) {
   process.on(signal, () => server.close(() => process.exit(0)))
