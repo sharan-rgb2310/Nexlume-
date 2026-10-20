@@ -8,10 +8,10 @@
       "productId": "P001",
       "productName": "Rice",
       "unit": "kg",
-      "openingStock": 1200,
+      "openingStock": 1800,
       "receivedQuantity": 11,
-      "availableQuantity": 1160,
-      "distributedQuantity": 51,
+      "availableQuantity": 1130,
+      "distributedQuantity": 81,
       "lowStockThreshold": 200,
       "pricePerUnit": 0,
       "status": "in_stock"
