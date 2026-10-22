@@ -1,5 +1,5 @@
 import { CalendarDays, MapPin } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const fallbackDateTime = { date: '16 Oct 2026', time: '10:30 AM' }
 
@@ -22,7 +22,27 @@ function getCurrentDateTime() {
 }
 
 export default function ShopInfoBar({ shopInfo }) {
-  const [dateTime] = useState(getCurrentDateTime)
+  const [dateTime, setDateTime] = useState(getCurrentDateTime)
+
+  useEffect(() => {
+    let intervalId
+    const updateDateTime = () => setDateTime(getCurrentDateTime())
+    const timeoutId = window.setTimeout(() => {
+      updateDateTime()
+      intervalId = window.setInterval(updateDateTime, 60_000)
+    }, 60_000 - (Date.now() % 60_000))
+    const syncWhenVisible = () => {
+      if (document.visibilityState === 'visible') updateDateTime()
+    }
+
+    document.addEventListener('visibilitychange', syncWhenVisible)
+
+    return () => {
+      window.clearTimeout(timeoutId)
+      window.clearInterval(intervalId)
+      document.removeEventListener('visibilitychange', syncWhenVisible)
+    }
+  }, [])
 
   return (
     <section className="shop-info" aria-label="Shop information">
