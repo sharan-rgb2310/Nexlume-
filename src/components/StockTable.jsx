@@ -45,7 +45,12 @@ export default function StockTable({
           </button>
         </div>
       </div>
-      {error && <p className="stock-error" role="alert">Unable to sync stock data: {error}</p>}
+      {error && (
+        <p className="stock-error" role="alert">
+          <span className="stock-error-icon" aria-hidden="true">!</span>
+          <span>Unable to sync stock data: {error}</span>
+        </p>
+      )}
       <span className="sr-only" aria-live="polite" aria-atomic="true">
         {products.length > 0
           ? `Showing all ${products.length} commodities.`

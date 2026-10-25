@@ -41,12 +41,12 @@ a {
 }
 
 .gov-header {
-  min-height: 138px;
+  min-height: 96px;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) 1px auto 1px minmax(0, 1fr);
   align-items: center;
-  gap: clamp(8px, 1.25vw, 20px);
-  padding: 12px 4.5%;
+  gap: clamp(12px, 2.5vw, 32px);
+  padding: 10px 4%;
   color: white;
   background: linear-gradient(112deg, #0b4d9c 0%, #0b3a8c 51%, #0a2f78 100%);
 }
@@ -59,17 +59,25 @@ a {
   flex: 0 1 auto;
 }
 
+.gov-header-divider {
+  width: 1px;
+  height: clamp(44px, 5.5vw, 72px);
+  background: rgb(255 255 255 / 45%);
+  align-self: center;
+  flex: 0 0 1px;
+}
+
 .emblem-wrap {
   display: flex;
   justify-content: center;
   align-items: center;
-  grid-column: 2;
+  grid-column: 3;
   grid-row: 1;
 }
 
 .emblem-wrap img {
-  width: clamp(58px, 7vw, 92px);
-  height: clamp(58px, 7vw, 92px);
+  width: clamp(62px, 7.5vw, 92px);
+  height: clamp(62px, 7.5vw, 92px);
   object-fit: contain;
 }
 
@@ -92,7 +100,7 @@ a {
 }
 
 .gov-copy-right {
-  grid-column: 3;
+  grid-column: 5;
   grid-row: 1;
   justify-self: start;
   align-items: flex-start;
@@ -101,30 +109,31 @@ a {
 
 .gov-tamil {
   font-family: 'Noto Sans Tamil', sans-serif;
-  font-size: clamp(15px, 1.7vw, 22px);
+  font-size: clamp(16px, 1.9vw, 24px);
   font-weight: 700;
-  line-height: 1.35;
-  transform: translateX(-10px);
+  line-height: 1.3;
 }
 
 .gov-english {
-  font-size: clamp(12px, 1.2vw, 17px);
-  font-weight: 500;
-  margin-top: 1px;
+  font-size: clamp(11px, 1.1vw, 15px);
+  font-weight: 400;
+  margin-top: 3px;
+  opacity: 0.92;
 }
 
 .gov-department-ta {
   font-family: 'Noto Sans Tamil', sans-serif;
-  font-size: clamp(11px, 1.25vw, 17px);
+  font-size: clamp(11px, 1.2vw, 15px);
   font-weight: 600;
-  line-height: 1.45;
+  line-height: 1.55;
 }
 
 .gov-department-en {
-  font-size: clamp(10px, 1vw, 14px);
-  line-height: 1.3;
-  margin-top: 2px;
-  transform: translateX(1px);
+  font-size: clamp(10px, 0.95vw, 13px);
+  font-weight: 400;
+  line-height: 1.5;
+  margin-top: 3px;
+  opacity: 0.92;
 }
 
 .digital-identity {
@@ -138,8 +147,8 @@ a {
 
 .digital-identity > img {
   flex: 0 0 auto;
-  width: 60px;
-  height: 72px;
+  width: 68px;
+  height: 82px;
   object-fit: contain;
 }
 
@@ -150,16 +159,16 @@ a {
 }
 
 .digital-identity strong {
-  font-size: clamp(18px, 1.5vw, 24px);
+  font-size: clamp(19px, 1.6vw, 26px);
   font-weight: 700;
   white-space: nowrap;
 }
 
 .digital-identity span {
   display: block;
-  margin-top: 4px;
-  font-size: clamp(11px, .9vw, 14px);
-  line-height: 1.32;
+  margin-top: 5px;
+  font-size: clamp(12px, 1vw, 15px);
+  line-height: 1.4;
   white-space: nowrap;
 }
 
@@ -168,12 +177,12 @@ a {
 }
 
 .brand-main {
-  min-height: 111px;
+  min-height: 116px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 28px;
-  padding: 10px 4.5%;
+  padding: 12px 4.5%;
 }
 
 .brand-divider {
@@ -186,25 +195,26 @@ a {
 .scheme-title {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 1px;
+  align-items: center;
+  gap: 4px;
   min-width: 0;
   color: #0b3a8c;
   line-height: 1.1;
+  text-align: center;
 }
 
 .scheme-title strong {
   font-family: 'Noto Sans Tamil', sans-serif;
   font-size: clamp(22px, 3.35vw, 32px);
-  line-height: 1.2;
+  line-height: 1.25;
   font-weight: 800;
   white-space: nowrap;
 }
 
 .scheme-title span {
-  font-size: clamp(24px, 4.2vw, 35px);
+  font-size: clamp(22px, 3.8vw, 32px);
   font-weight: 700;
-  letter-spacing: -.7px;
+  letter-spacing: -.5px;
 }
 
 .tricolor-line {
@@ -222,40 +232,40 @@ a {
 }
 
 .shop-info {
-  min-height: 106px;
   display: grid;
-  grid-template-columns: 1.04fr 1.03fr .87fr;
-  align-items: center;
-  padding: 14px 16px;
-  border-radius: 10px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr auto;
+  align-items: stretch;
+  padding: 0;
+  border-radius: 12px;
+  overflow: hidden;
   color: #fff;
   background: linear-gradient(110deg, #10a06b 0%, #08784d 100%);
-  box-shadow: 0 4px 10px rgb(10 83 58 / 14%);
+  box-shadow: 0 4px 14px rgb(10 83 58 / 18%);
 }
 
 .shop-info-item {
-  height: 100%;
   display: flex;
   align-items: center;
   min-width: 0;
+  padding: 14px 16px;
 }
 
 .shop-info-item + .shop-info-item {
-  border-left: 1px solid rgb(255 255 255 / 75%);
-  padding-left: 18px;
+  border-left: 1px solid rgb(255 255 255 / 55%);
 }
 
 .shop-code {
-  gap: 12px;
+  gap: 14px;
 }
 
 .map-pin-circle {
-  width: 78px;
-  height: 78px;
-  flex: 0 0 78px;
+  width: 72px;
+  height: 72px;
+  flex: 0 0 72px;
   display: grid;
   place-items: center;
-  border: 3px solid #fff;
+  border: 2.5px solid #fff;
   border-radius: 50%;
 }
 
@@ -266,11 +276,12 @@ a {
 
 .info-label {
   display: flex;
-  gap: 5px;
+  gap: 4px;
   align-items: center;
   font-size: 13px;
   line-height: 1.4;
   white-space: nowrap;
+  opacity: 0.9;
 }
 
 .info-label [lang='ta'] {
@@ -280,14 +291,15 @@ a {
 
 .shop-code-number {
   display: block;
-  margin-top: 4px;
-  font-size: 27px;
-  line-height: 1;
-  letter-spacing: 2px;
+  margin-top: 5px;
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: 1.5px;
 }
 
 .shop-location {
-  padding-left: 17px !important;
+  padding-left: 16px !important;
 }
 
 .location-ta,
@@ -297,46 +309,60 @@ a {
 }
 
 .location-ta {
-  margin-top: 4px;
+  margin-top: 5px;
   font-family: 'Noto Sans Tamil', sans-serif;
-  font-size: 17px;
-  line-height: 1.5;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 .location-en {
-  font-size: 15px;
-  line-height: 1.25;
+  font-size: 14px;
+  line-height: 1.3;
+  opacity: 0.88;
 }
 
 .shop-date {
-  gap: 9px;
+  gap: 12px;
+  grid-column: 1 / -1;
+  border-top: 1px solid rgb(255 255 255 / 35%);
+  padding: 12px 16px !important;
+  align-items: center;
 }
 
 .shop-date .info-label {
-  font-size: 11px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.shop-date-divider {
+  width: 1px;
+  height: 28px;
+  background: rgb(255 255 255 / 55%);
+  flex: 0 0 1px;
+  margin: 0 4px;
 }
 
 .calendar-icon {
-  flex: 0 0 33px;
+  flex: 0 0 32px;
   fill: #fff;
   stroke: #0d8052;
 }
 
 .date-value,
 .time-value {
-  display: block;
+  display: inline-block;
   font-weight: 700;
   white-space: nowrap;
 }
 
 .date-value {
-  margin-top: 5px;
-  font-size: 16px;
+  font-size: 17px;
 }
 
 .time-value {
-  margin-top: 2px;
-  font-size: 21px;
+  font-size: 17px;
+  margin-left: 10px;
 }
 
 .stock-section {
@@ -544,10 +570,29 @@ a {
 
 .stock-error {
   margin: 0;
-  padding: 8px 16px;
+  padding: 10px 16px;
   color: #991b1b;
   background: #fef2f2;
+  border-left: 0;
   font-size: 13px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.5;
+}
+
+.stock-error-icon {
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ef4444;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 1px;
 }
 
 .empty-stock {
@@ -742,15 +787,15 @@ a {
 
 @media (max-width: 700px) {
   .gov-header {
-    min-height: 125px;
-    gap: 12px;
-    padding: 10px 4%;
+    min-height: 82px;
+    gap: clamp(6px, 1.8vw, 14px);
+    padding: 8px 3%;
   }
-
-  .gov-tamil { font-size: clamp(12px, 2.8vw, 17px); }
-  .gov-english { font-size: clamp(9px, 2vw, 12px); }
-  .gov-department-ta { font-size: clamp(9px, 2vw, 12px); }
-  .gov-department-en { font-size: clamp(8px, 1.7vw, 10px); }
+  .gov-header-divider { height: clamp(36px, 5vw, 56px); }
+  .gov-tamil { font-size: clamp(12px, 2.6vw, 16px); }
+  .gov-english { font-size: clamp(9px, 1.8vw, 12px); }
+  .gov-department-ta { font-size: clamp(9px, 1.8vw, 12px); }
+  .gov-department-en { font-size: clamp(8px, 1.6vw, 10px); }
 
   .digital-identity {
     gap: 8px;
@@ -765,34 +810,32 @@ a {
   .digital-identity span { font-size: clamp(9px, 1.6vw, 12px); }
 
   .brand-main {
-    min-height: 90px;
+    min-height: 92px;
     gap: 14px;
-    padding: 9px 3%;
+    padding: 10px 3%;
   }
 
   .brand-divider { height: 55px; }
   .scheme-title strong { font-size: clamp(16px, 3.2vw, 23px); }
-  .scheme-title span { font-size: clamp(18px, 3.8vw, 25px); }
-  .dashboard-content { padding: 12px 2.4% 10px; }
+  .scheme-title span { font-size: clamp(17px, 3.6vw, 24px); }
+  .dashboard-content { padding: 10px 2.4% 10px; }
 
   .shop-info {
-    min-height: 98px;
-    grid-template-columns: 1fr 1fr .88fr;
-    padding: 10px;
+    grid-template-columns: 1fr 1fr;
   }
 
-  .shop-info-item + .shop-info-item { padding-left: 10px; }
-  .shop-code { gap: 6px; }
-  .map-pin-circle { width: 54px; height: 54px; flex-basis: 54px; border-width: 2px; }
+  .shop-info-item { padding: 10px 12px; }
+  .shop-code { gap: 8px; }
+  .map-pin-circle { width: 56px; height: 56px; flex-basis: 56px; border-width: 2px; }
   .map-pin-circle svg { width: 28px; height: 28px; }
-  .info-label { gap: 3px; font-size: 10px; }
-  .shop-code-number { font-size: 23px; }
-  .location-ta { font-size: 13px; }
-  .location-en { font-size: 11px; }
-  .shop-date { gap: 7px; }
-  .calendar-icon { width: 25px; height: 25px; flex-basis: 25px; }
-  .date-value { font-size: 12px; }
-  .time-value { font-size: 16px; }
+  .info-label { gap: 3px; font-size: 11px; }
+  .shop-code-number { font-size: 22px; }
+  .location-ta { font-size: 15px; }
+  .location-en { font-size: 12px; }
+  .shop-date { gap: 10px; padding: 10px 12px !important; }
+  .calendar-icon { width: 26px; height: 26px; flex-basis: 26px; }
+  .date-value { font-size: 14px; }
+  .time-value { font-size: 14px; }
 
   .stock-titlebar { min-height: 67px; gap: 9px; padding: 9px 13px; }
   .stock-package-icon { width: 34px; height: 34px; flex-basis: 34px; }
@@ -836,37 +879,41 @@ a {
 }
 
 @media (max-width: 430px) {
-  .gov-header { min-height: 112px; gap: 7px; }
-  .gov-header { grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr); gap: 6px; padding-inline: 3%; }
-  .emblem-wrap img { width: 46px; height: 46px; }
-  .gov-tamil { font-size: clamp(10px, 3vw, 12px); }
-  .gov-english { font-size: clamp(7px, 2.1vw, 9px); }
-  .gov-department-ta { font-size: clamp(7px, 1.9vw, 8px); }
-  .gov-department-en { font-size: clamp(6px, 1.7vw, 7px); }
+  .gov-header {
+    min-height: 78px;
+    grid-template-columns: minmax(0, 1fr) 1px auto 1px minmax(0, 1fr);
+    gap: clamp(4px, 1.3vw, 8px);
+    padding: 8px 3%;
+  }
+  .gov-header-divider { height: 38px; }
+  .emblem-wrap img { width: 48px; height: 48px; }
+  .gov-tamil { font-size: clamp(10px, 2.8vw, 13px); }
+  .gov-english { font-size: clamp(8px, 1.9vw, 10px); }
+  .gov-department-ta { font-size: clamp(8px, 1.8vw, 10px); }
+  .gov-department-en { font-size: clamp(7px, 1.6vw, 8px); }
   .brand-main {
     min-height: 0;
     flex-direction: column;
-    gap: 8px;
-    padding: 12px 3%;
+    gap: 10px;
+    padding: 14px 3%;
   }
   .brand-divider { width: min(80%, 220px); height: 1px; flex-basis: 1px; }
   .scheme-title { align-items: center; text-align: center; }
-  .digital-identity { gap: 7px; }
-  .digital-identity > img { width: 38px; height: 48px; }
-  .digital-identity strong { font-size: 15px; }
-  .digital-identity span { margin-top: 2px; font-size: 9px; }
-  .scheme-title strong { font-size: clamp(12px, 3.2vw, 14px); }
-  .scheme-title span { font-size: 17px; }
-  .shop-info { grid-template-columns: 1fr 1fr; row-gap: 9px; }
-  .shop-location { border-left: 1px solid rgb(255 255 255 / 75%); }
-  .shop-location { padding-left: 10px !important; }
-  .shop-code .info-label { font-size: 9px; }
-  .location-ta { font-size: 12px; }
-  .shop-date { grid-column: 1 / -1; min-height: 38px; border-left: 0 !important; border-top: 1px solid rgb(255 255 255 / 55%); padding: 7px 5px 0 !important; }
-  .shop-date .info-label, .shop-date .date-value, .shop-date .time-value { display: inline-flex; margin: 0 8px 0 0; }
-  .shop-date .info-label { font-size: 9px; }
-  .shop-date .date-value { font-size: 12px; }
-  .shop-date .time-value { font-size: 14px; }
+  .digital-identity { gap: 10px; }
+  .digital-identity > img { width: 44px; height: 54px; }
+  .digital-identity strong { font-size: 17px; }
+  .digital-identity span { margin-top: 3px; font-size: 11px; }
+  .scheme-title strong { font-size: clamp(14px, 3.5vw, 18px); }
+  .scheme-title span { font-size: clamp(16px, 3.8vw, 20px); }
+  .shop-info { grid-template-columns: 1fr 1fr; }
+  .shop-info-item { padding: 10px 10px; }
+  .shop-location { border-left: 1px solid rgb(255 255 255 / 55%) !important; }
+  .shop-code .info-label { font-size: 10px; }
+  .location-ta { font-size: 13px; }
+  .shop-date { grid-column: 1 / -1; min-height: 40px; padding: 8px 10px !important; }
+  .shop-date .info-label { font-size: 10px; }
+  .shop-date .date-value { font-size: 13px; }
+  .shop-date .time-value { font-size: 13px; }
   .stock-titlebar { padding: 8px; gap: 6px; }
   .stock-heading-copy h2 { font-size: 13px; }
   .stock-heading-copy > span { font-size: 11px; }
@@ -899,12 +946,16 @@ a {
 }
 
 @media (max-width: 360px) {
-  .gov-header { gap: 4px; padding: 8px 2%; }
-  .gov-header { grid-template-columns: minmax(0, 1fr) 42px minmax(0, 1fr); }
-  .emblem-wrap img { width: 40px; height: 40px; }
+  .gov-header {
+    grid-template-columns: minmax(0, 1fr) 1px auto 1px minmax(0, 1fr);
+    gap: 3px;
+    padding: 7px 2%;
+  }
+  .gov-header-divider { height: 30px; }
+  .emblem-wrap img { width: 38px; height: 38px; }
   .gov-tamil { font-size: 9px; }
   .gov-english { font-size: 7px; }
-  .gov-department-ta { font-size: 6px; }
+  .gov-department-ta { font-size: 7px; }
   .gov-department-en { font-size: 6px; }
   .brand-main { padding-right: 2%; padding-left: 2%; }
   .digital-identity { gap: 5px; }
@@ -948,51 +999,50 @@ a {
 
 @media (min-width: 1024px) {
   .gov-header {
-    min-height: 82px;
-    gap: 14px;
-    padding: 6px 3.5%;
+    min-height: 88px;
+    gap: clamp(16px, 2vw, 28px);
+    padding: 8px 3.5%;
   }
 
-  .emblem-wrap {
-    width: 72px;
+  .gov-header-divider {
+    height: 60px;
   }
 
   .emblem-wrap img {
-    width: 72px;
-    height: 72px;
+    width: 76px;
+    height: 76px;
   }
 
-  .gov-tamil { font-size: 14px; }
-  .gov-english { font-size: 12px; }
-  .gov-department-ta { margin-top: 2px; font-size: 10px; }
-  .gov-department-en { margin-top: 1px; font-size: 10px; }
-  .digital-identity > img { width: 52px; height: 64px; }
-  .digital-identity strong { font-size: 16px; }
-  .digital-identity span { margin-top: 2px; font-size: 10px; }
+  .gov-tamil { font-size: 17px; }
+  .gov-english { font-size: 13px; }
+  .gov-department-ta { font-size: 13px; line-height: 1.6; }
+  .gov-department-en { font-size: 11px; }
+  .digital-identity > img { width: 56px; height: 68px; }
+  .digital-identity strong { font-size: 18px; }
+  .digital-identity span { margin-top: 3px; font-size: 11px; }
 
-  .brand-main { min-height: 74px; padding: 6px 3.5%; }
-  .brand-main { gap: 24px; }
-  .brand-divider { height: 57px; }
+  .brand-main { min-height: 80px; padding: 8px 3.5%; }
+  .brand-main { gap: 26px; }
+  .brand-divider { height: 58px; }
   .scheme-title strong { font-size: clamp(25px, 2.3vw, 31px); }
-  .scheme-title span { font-size: clamp(25px, 2.5vw, 33px); }
+  .scheme-title span { font-size: clamp(24px, 2.4vw, 31px); }
   .tricolor-line { height: 5px; }
 
-  .dashboard-content { padding: 6px 2.3% 6px; }
-  .shop-info { min-height: 72px; padding: 8px 12px; }
-  .map-pin-circle { width: 54px; height: 54px; flex-basis: 54px; border-width: 2px; }
+  .dashboard-content { padding: 8px 2.3% 6px; }
+  .shop-info { grid-template-columns: 1fr 1fr; }
+  .shop-info-item { padding: 10px 16px; }
+  .map-pin-circle { width: 56px; height: 56px; flex-basis: 56px; border-width: 2px; }
   .map-pin-circle svg { width: 29px; height: 29px; }
-  .shop-code { gap: 10px; }
-  .shop-code-number { margin-top: 2px; font-size: clamp(17px, 1.7vw, 22px); letter-spacing: 1px; }
+  .shop-code { gap: 12px; }
+  .shop-code-number { margin-top: 3px; font-size: clamp(17px, 1.7vw, 22px); letter-spacing: 1px; }
   .info-label { gap: 4px; font-size: 11px; }
-  .location-ta { margin-top: 1px; font-size: 14px; line-height: 1.25; }
+  .location-ta { margin-top: 3px; font-size: 15px; line-height: 1.3; }
   .location-en { font-size: 12px; }
-  .shop-info-item + .shop-info-item { padding-left: 14px; }
-  .shop-location { padding-left: 14px !important; }
-  .shop-date { gap: 8px; }
-  .shop-date .info-label { font-size: 10px; }
-  .calendar-icon { width: 25px; height: 25px; flex-basis: 25px; }
-  .date-value { margin-top: 1px; font-size: 13px; }
-  .time-value { margin-top: 0; font-size: 16px; }
+  .shop-date { gap: 10px; }
+  .shop-date .info-label { font-size: 11px; }
+  .calendar-icon { width: 26px; height: 26px; flex-basis: 26px; }
+  .date-value { font-size: 14px; }
+  .time-value { font-size: 14px; }
 
   .stock-section { margin-top: 10px; }
   .stock-titlebar { min-height: 52px; gap: 10px; padding: 6px 18px; }

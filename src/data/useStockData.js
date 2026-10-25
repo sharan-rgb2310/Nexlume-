@@ -46,6 +46,10 @@ export default function useStockData() {
         throw new Error(`Stock request failed with HTTP ${response.status}.${diagnosis ? ` ${diagnosis}` : ''}${serverMessage}`)
       }
 
+      const contentType = response.headers.get('content-type') ?? ''
+      if (!contentType.includes('application/json')) {
+        throw new Error(`The stock API returned an unexpected response (${response.status}). The server may not be configured correctly — check that the /api/stock route is deployed and returning JSON.`)
+      }
       const result = normalizeStockResponse(await response.json())
       setStock({
         ...result,

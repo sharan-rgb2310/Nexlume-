@@ -61,12 +61,11 @@ export default function ShopInfoBar({ shopInfo }) {
         </div>
       </div>
       <div className="shop-info-item shop-date">
-        <CalendarDays role="img" aria-label="Current date and time" className="calendar-icon" size={33} strokeWidth={2.5} />
-        <div>
-          <div className="info-label"><span lang="ta">இன்றைய தேதி &amp; நேரம்</span></div>
-          <strong className="date-value">{dateTime.date}</strong>
-          <strong className="time-value">{dateTime.time}</strong>
-        </div>
+        <CalendarDays role="img" aria-label="Current date and time" className="calendar-icon" size={30} strokeWidth={2.5} />
+        <div className="info-label" lang="ta">இன்றைய தேதி &amp; நேரம்</div>
+        <div className="shop-date-divider" aria-hidden="true" />
+        <strong className="date-value">{dateTime.date}</strong>
+        <strong className="time-value">{dateTime.time}</strong>
       </div>
     </section>
   )
