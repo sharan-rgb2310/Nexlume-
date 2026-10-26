@@ -551,21 +551,21 @@ a {
   align-items: center;
   justify-content: center;
   border-radius: 14px;
-  background: #e6f7ee;
-  color: #0f6b3a;
+  background: transparent;
+  color: #111111;
   font-size: 37px;
   font-weight: 700;
   letter-spacing: 1px;
 }
 
 .stock-pill.low-stock {
-  background: #fef3c7;
-  color: #92400e;
+  background: transparent;
+  color: #111111;
 }
 
 .stock-pill.out-of-stock {
-  background: #fee2e2;
-  color: #991b1b;
+  background: transparent;
+  color: #111111;
 }
 
 .stock-error {

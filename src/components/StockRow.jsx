@@ -7,7 +7,21 @@ export default function StockRow({ item }) {
   return (
     <tr className="stock-row">
       <th scope="row" className="commodity-cell">
-        <Graphic size={78} />
+        <span className="commodity-art" style={{ width: 78, height: 78, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+          {item.image_url ? (
+            <img
+              src={item.image_url}
+              alt={item.en}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
+              onError={(e) => {
+                // Fallback to graphic on broken image
+                e.currentTarget.style.display = 'none'
+              }}
+            />
+          ) : Graphic ? (
+            <Graphic size={78} />
+          ) : null}
+        </span>
         <span className="commodity-name">
           <strong lang="ta">{item.ta}</strong>
           <span>{item.en}</span>

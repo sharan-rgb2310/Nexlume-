@@ -5,16 +5,19 @@ import {
   AlertTriangle, ArrowDown, ArrowUp, Building2, CalendarDays, Check, CheckCircle2, Clock3,
   ChevronDown, ChevronLeft, ChevronRight, CircleHelp, Filter, LayoutDashboard,
   Menu, Monitor, Pencil, Plus, Search, Settings as SettingsIcon, ShieldCheck,
-  SlidersHorizontal, Store, Trash2, CircleUserRound, Wifi, X, Eye,
+  SlidersHorizontal, Store, Trash2, CircleUserRound, Wifi, X, Eye, Package, LogOut,
 } from 'lucide-react'
 import { StoreProvider } from './context'
 import { initialData } from './data'
 import { useStore } from './useStore'
+import { useAuth } from '../context/AuthContext'
+import ProductsPage from './ProductsPage'
 import governmentSeal from '../assets/Seal_of_Tamil_Nadu.svg.webp'
 import nexlumeLogo from '../assets/Nexlume Futuristic X Logo.png'
 
 const nav = [
   { to: '/admin', label: 'Dashboard', icon: LayoutDashboard },
+  { to: '/admin/products', label: 'Products', icon: Package },
   { to: '/admin/shops', label: 'Shops', icon: Store },
   { to: '/admin/settings', label: 'Settings', icon: SettingsIcon },
 ]
@@ -28,8 +31,14 @@ function Shell() {
   const [mobileNav, setMobileNav] = useState(false)
   const [now, setNow] = useState(appStartTime)
   const { data } = useStore()
+  const { user, profile, logout } = useAuth()
   const settings = data.settings
   const locale = settings.language === 'Tamil' ? 'ta-IN' : 'en-IN'
+
+  const displayName = profile?.username || user?.user_metadata?.username || user?.email?.split('@')[0] || data.settings.name || 'Admin'
+  const displayEmail = user?.email || data.settings.email || 'admin@tn.gov.in'
+  const displayRole = profile?.role ? (profile.role.charAt(0).toUpperCase() + profile.role.slice(1)) : 'Admin'
+
   useEffect(() => {
     const timer = window.setInterval(() => setNow(new Date()), 30000)
     return () => window.clearInterval(timer)
@@ -57,25 +66,85 @@ function Shell() {
             <span className="time-block"><Clock3 size={16} /><b>{formatTime(now, settings, locale)}</b></span>
           </div>
           <div className="profile-wrap">
-            <button className="profile-button" onClick={() => setProfileOpen(!profileOpen)}><CircleUserRound size={19} /><span><b>{data.settings.name || 'Admin'}</b><small>{data.settings.role || 'System Administrator'}</small></span><ChevronDown size={14} /></button>
-            {profileOpen && <div className="profile-menu"><b>{data.settings.name || 'Admin'}</b><span>{data.settings.email || 'admin@tn.gov.in'}</span><NavLink to="/admin/settings" onClick={() => setProfileOpen(false)}>Profile settings</NavLink></div>}
+            <button className="profile-button" onClick={() => setProfileOpen(!profileOpen)}><CircleUserRound size={19} /><span><b>{displayName}</b><small>{displayRole}</small></span><ChevronDown size={14} /></button>
+            {profileOpen && (
+              <div className="profile-menu">
+                <b>{displayName}</b>
+                <span>{displayEmail}</span>
+                <NavLink to="/admin/settings" onClick={() => setProfileOpen(false)}>Profile settings</NavLink>
+                <button
+                  type="button"
+                  onClick={async () => {
+                    setProfileOpen(false)
+                    await logout()
+                  }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    background: 'none',
+                    border: 'none',
+                    color: '#dc2626',
+                    padding: '8px 0 0',
+                    borderTop: '1px solid #e2e8f0',
+                    cursor: 'pointer',
+                    fontSize: '11px',
+                    fontWeight: 600,
+                    textAlign: 'left',
+                  }}
+                >
+                  <LogOut size={13} /> Log Out
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </header>
       <div className="body-shell">
         {mobileNav && <button aria-label="Close navigation" className="mobile-scrim" onClick={() => setMobileNav(false)} />}
         <aside className={cls('sidebar', mobileNav && 'sidebar-open')}>
-          <nav className="side-nav">{nav.map(({ to, label, icon: Icon }) => <NavLink key={to} to={to} end={to === '/admin'} onClick={() => setMobileNav(false)} className={({ isActive }) => cls('side-link', isActive && 'active')}><Icon size={20} /><span>{label}</span></NavLink>)}</nav>
-          <div className="sidebar-online"><i /><span><b>System Online</b><small>All services are running</small></span></div>
+          <nav className="side-nav">
+            {nav.map(({ to, label, icon: Icon }) => (
+              <NavLink key={to} to={to} end={to === '/admin'} onClick={() => setMobileNav(false)} className={({ isActive }) => cls('side-link', isActive && 'active')}>
+                <Icon size={20} />
+                <span>{label}</span>
+              </NavLink>
+            ))}
+          </nav>
+          <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <button
+              type="button"
+              onClick={() => logout()}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '8px 11px',
+                borderRadius: '8px',
+                background: 'rgba(239, 68, 68, 0.12)',
+                border: '1px solid rgba(239, 68, 68, 0.3)',
+                color: '#fca5a5',
+                fontSize: '11px',
+                fontWeight: 600,
+                cursor: 'pointer',
+                transition: 'background 0.2s',
+              }}
+            >
+              <LogOut size={16} />
+              <span>Log Out</span>
+            </button>
+            <div className="sidebar-online"><i /><span><b>System Online</b><small>Supabase &amp; Services Active</small></span></div>
+          </div>
         </aside>
         <main className="main-content">
           <Routes>
             <Route index element={<Dashboard />} />
+            <Route path="products" element={<ProductsPage />} />
             <Route path="shops" element={<ShopsPage />} />
             <Route path="settings" element={<SettingsPage />} />
             <Route path="*" element={<Navigate to="/admin" replace />} />
           </Routes>
-          <footer className="footer-note"><span>{data.settings.systemName || 'Ration Shop TV Display System'}</span><span>Frontend preview · Local browser data</span></footer>
+          <footer className="footer-note"><span>{data.settings.systemName || 'Ration Shop TV Display System'}</span><span>Connected to Supabase · Live Data</span></footer>
         </main>
       </div>
       <Toast />
