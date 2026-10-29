@@ -81,6 +81,22 @@ a {
   object-fit: contain;
 }
 
+.emblem-fullscreen-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.emblem-fullscreen-toggle:focus-visible {
+  outline: 3px solid #facc15;
+  outline-offset: 3px;
+  border-radius: 50%;
+}
+
 .gov-copy {
   display: flex;
   flex-direction: column;
